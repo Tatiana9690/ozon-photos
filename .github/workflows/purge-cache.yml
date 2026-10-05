@@ -1,0 +1,19 @@
+name: Purge jsDelivr Cache
+
+on:
+  push:
+    branches: [ main ] # Запускать при пуше в ветку main
+  workflow_dispatch: # Позволяет запускать вручную из вкладки Actions
+
+jobs:
+  purge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Purge jsDelivr Cache
+        uses: List-KR/jsdelivr-purge@7.0.1
+        with:
+          urls: |
+            /gh/Tatiana9690/ozon-photos@main/images/
